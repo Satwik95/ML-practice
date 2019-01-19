@@ -61,12 +61,17 @@ x = preprocessing.scale(x)
 
 #splitting the data into 20% test data
 x_train, x_test, y_train, y_test = cross_validation.train_test_split(x, y, test_size=0.2)
-clf = LinearRegression()
+#we can thread massively in linear regression as well, usinh n_jobs
+#-1 for as many as possible on your system, significantly faster training period
+clf = LinearRegression(n_jobs=-1)
+#clf = svm.SVR()
 #train
 clf.fit(x_train, y_train)
 #test
 accuracy = clf.score(x_test, y_test)
-print(accuracy)
+#sq. error
+print(str(accuracy*100.0)+"%")
+
 
 
 
