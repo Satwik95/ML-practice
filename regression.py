@@ -60,7 +60,7 @@ x = preprocessing.scale(x)
 
 
 #splitting the data into 20% test data
-x_train, y_train, x_test, y_test = cross_validation.train_test_split(x, y, test_size=0.2)
+x_train, x_test, y_train, y_test = cross_validation.train_test_split(x, y, test_size=0.2)
 clf = LinearRegression()
 #train
 clf.fit(x_train, y_train)
