@@ -13,10 +13,19 @@ def best_fit(X,Y):
     c = mean(Y)-(m*mean(X))
     return m,c
 
+def sq_error(Y_orig, Y_new):
+    return sum((Y_orig - Y_new )**2)
+
+def r_sq(Y_orig, Y_new):
+    Y_mean = [mean(Y_orig) for _ in Y_orig]
+    sq_y_line = sq_error(Y_orig, Y_new)
+    sq_y_mean = sq_error(Y_orig, Y_mean)
+    return 1 - (sq_y_line/sq_y_mean)
+
 m, c = best_fit(X,Y)
 
 reg_line = [(m*x)+c for x in X]
-
+print(r_sq(Y, reg_line))
 plt.scatter(X,Y)
 plt.plot(X,reg_line)
 plt.show()
