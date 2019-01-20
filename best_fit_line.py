@@ -36,7 +36,9 @@ def r_sq(Y_orig, Y_new):
     sq_y_mean = sq_error(Y_orig, Y_mean)
     return 1 - (sq_y_line/sq_y_mean)
 
-X, Y = create_data(100, 20,2,correlation='neg')
+# the more we incraese the variance the less correlated the data is
+# hence the r2 value will be very less
+X, Y = create_data(100, 1000,2,correlation='neg')
 m, c = best_fit(X,Y)
 
 reg_line = [(m*x)+c for x in X]
